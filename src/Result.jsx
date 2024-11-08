@@ -1,15 +1,11 @@
 import { useState } from "react";
-import SearchBar from "./SearchBar";
 
 function Result({ item }) {
-  console.log(item);
-
   return (
-    <>
+    <div className="details">
       <h3>Author name: {item.user.name}</h3>
-      <h3>Total likes: {item.likes}</h3>
       <img src={item.urls.small_s3} alt="item photo" />
-    </>
+    </div>
   );
 }
 
