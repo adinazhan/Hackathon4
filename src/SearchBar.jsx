@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 
 import key from "../keys";
 
-function SearchBar() {
-  const [data, setData] = useState("");
+function SearchBar({ setResults }) {
   const [search, setSearch] = useState("");
 
   const loadingData = async () => {
@@ -13,7 +12,7 @@ function SearchBar() {
     const data = await response.json();
     console.log(data);
 
-    setData(data);
+    setResults(data);
   };
   useEffect(() => {
     loadingData();
@@ -25,7 +24,6 @@ function SearchBar() {
   return (
     <>
       <input type="text" onChange={handleInput} />
-
       <button onClick={loadingData}>Search</button>
     </>
   );
