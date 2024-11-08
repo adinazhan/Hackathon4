@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import key from "../keys";
 
+import "./SearchBar.css";
+
 function SearchBar({ setResults }) {
   const [search, setSearch] = useState("");
 

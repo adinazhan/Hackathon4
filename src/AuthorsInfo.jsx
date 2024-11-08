@@ -7,7 +7,7 @@ import AuthorsImages from "./AuthorsImages";
 
 function AuthorsInfo() {
   const [author, setAuthor] = useState(null);
-  const [authorName, setAuthorName] = useState("");
+
   const { id } = useParams();
 
   const loadData = async () => {
@@ -24,16 +24,18 @@ function AuthorsInfo() {
   }, []);
 
   return (
-    <div>
+    <div className="author__detais">
       <Link to={"/"}>Return to homepage</Link>
-      <h1>Username: {author && author.username}</h1>
-      <h4>{author && author.bio}</h4>
-      <div>
-        Name: {author && author.name} <br />
+
+      <div className="information">
+        <h1> Name: {author && author.name} </h1>
+        Username: {author && author.username}
+        <br />
+        {author && author.bio}
         Total likes: {author && author.total_likes} <br />
         Followers count: {author && author.followers_count}
       </div>
-      <div>
+      <div className="author__images">
         <AuthorsImages />
       </div>
     </div>
