@@ -15,9 +15,6 @@ function SearchBar({ setResults }) {
 
     setResults(data);
   };
-  useEffect(() => {
-    loadingData();
-  }, []);
 
   const handleInput = (e) => {
     setSearch(e.target.value);
@@ -26,9 +23,6 @@ function SearchBar({ setResults }) {
     <>
       <input type="text" onChange={handleInput} />
       <button onClick={loadingData}>Search</button>
-      {/* <Link to="/results" onClick={loadingData}>
-        See results
-      </Link> */}
     </>
   );
 }
