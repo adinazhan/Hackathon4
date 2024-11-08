@@ -7,7 +7,7 @@ function SearchBar({ setResults }) {
 
   const loadingData = async () => {
     const response = await fetch(
-      `https://api.unsplash.com/search/photos?query="${search}"&client_id=${key}`
+      `https://api.unsplash.com/search/photos?per_page=12&query="${search}"&client_id=${key}`
     );
     const data = await response.json();
     console.log(data);
