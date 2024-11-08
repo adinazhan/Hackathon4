@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import key from "../keys";
 
@@ -25,6 +26,9 @@ function SearchBar({ setResults }) {
     <>
       <input type="text" onChange={handleInput} />
       <button onClick={loadingData}>Search</button>
+      {/* <Link to="/results" onClick={loadingData}>
+        See results
+      </Link> */}
     </>
   );
 }

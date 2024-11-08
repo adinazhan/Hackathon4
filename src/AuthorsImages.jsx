@@ -1,33 +1,39 @@
-import { useEffect, useState } from "react"
-import key from "../keys"
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import key from "../keys";
 
-function AuthorsImages(){
+function AuthorsImages() {
+  const [images, setImages] = useState(null);
+  const [imgAuthor, setImgAuthor] = useState("");
+  const { id } = useParams();
 
-    const[images, setImages] = useState(null)
-    const[imgAuthor, setImgAuthor] = useState("ana_tavares")
+  const loadData = async () => {
+    const response = await fetch(
+      `https://api.unsplash.com/users/${id}/photos?per_page=100&client_id=${key}`
+    );
+    const data = await response.json();
+    console.log(data);
+    setImages(data);
+    setImgAuthor(data.user.username);
+  };
 
-    const loadData = async () =>{
-        const response = await fetch(`https://api.unsplash.com/users/${imgAuthor}/photos?per_page=100&client_id=${key}`)
-        const data = await response.json()
-        console.log(data);
-        setImages(data)
-    }
+  useEffect(() => {
+    loadData();
+  }, []);
 
-    useEffect(()=>{
-        loadData()
-    },[])
-
-    return(
-        <div>
-        Images: {images && images.map((result, index)=> {
-         return (
-        <div key={index}>
-            <img src={result.urls.small} alt="img" />  
-        </div>
-            )
+  return (
+    <div>
+      Images:{" "}
+      {images &&
+        images.map((result, index) => {
+          return (
+            <div key={index}>
+              <img src={result.urls.small} alt="img" />
+            </div>
+          );
         })}
-        </div>
-    )
+    </div>
+  );
 }
 
 export default AuthorsImages;

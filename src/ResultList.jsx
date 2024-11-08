@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Result from "./Result";
 
 function ResultList({ results }) {
